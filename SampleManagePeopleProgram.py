@@ -19,12 +19,11 @@ def add():
     global names
     
     if names.count(name) == 1 :
-        sb.showMessage(name + 'is already yout friend.')
+        statusBar.showMessage(name + ' is already yout friend.')
     else :
-        sb.showMessage(name + 'is your new friend.')
+        statusBar.showMessage(name + ' is your new friend.')
         names.append(name)
-    #print('ADD')
-    pass
+        
 def remove():
     name = nameLineEdit.text()
     if len(name) == 0:
@@ -33,17 +32,13 @@ def remove():
     global names
     
     if names.count(name) == 0:
-        sb.showMessage(name + 'is not your friend.')
+        statusBar.showMessage(name + ' is not your friend.')
     else:
-        sb.showMessage(name + 'is removed.')
+        statusBar.showMessage(name + ' is removed.')
         names.remove(name)
-    #print('REMOVE')
-    pass
 
 def close():
     quit()
-    print('EXIT')
-    pass
 
 ''' Menu Bar'''
 menuBar = win.menuBar()
@@ -83,6 +78,8 @@ btnLayout = QHBoxLayout()
 btnAdd = QPushButton('ADD')
 btnRemove = QPushButton('REMOVE')
 
+btnAdd.clicked.connect(add)
+btnRemove.clicked.connect(remove)
 
 btnLayout.addWidget(btnAdd)
 btnLayout.addWidget(btnRemove)
